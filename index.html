@@ -1,0 +1,448 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Spandana | Portfolio</title>
+  <meta name="description" content="Portfolio website for Chetukoori Spandana – Data Analyst & ML Enthusiast" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020;      /* deep blue */
+      --panel: #0f1733;   /* card background */
+      --text: #e8ecf8;    /* primary text */
+      --muted: #a8b0c3;   /* secondary text */
+      --brand: #7c9cff;   /* accent */
+      --brand-2: #00e5a8; /* accent 2 */
+      --ring: rgba(124,156,255,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: var(--text); background: radial-gradient(1000px 600px at 10% -20%, #1b2553 0, transparent 60%), radial-gradient(900px 600px at 100% 10%, #0f2d3c 0, transparent 60%), var(--bg);
+      line-height:1.6;
+    }
+    a{ color:inherit; text-decoration:none }
+    .container{ width:min(1100px, 92%); margin-inline:auto }
+    header{ position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid rgba(255,255,255,.06); z-index:50 }
+    .nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+    .brand{ display:flex; gap:.7rem; align-items:center; font-weight:800; letter-spacing:.2px }
+    .logo{ width:36px; height:36px; border-radius:11px; background:conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2)); box-shadow:0 0 0 6px rgba(124,156,255,.12); }
+    .nav a{ opacity:.9 }
+    .nav a:hover{ opacity:1 }
+    .nav-links{ display:flex; gap:1rem; font-weight:600; color:var(--muted) }.hero{ display:grid; grid-template-columns: 1.2fr .8fr; gap:2rem; padding:64px 0 24px; align-items:center }
+@media (max-width:900px){ .hero{ grid-template-columns:1fr } }
+.card{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.25) }
+.hero .left{ padding:28px; border-radius:24px }
+.hello{ display:inline-flex; align-items:center; gap:.5rem; padding:6px 10px; border-radius:999px; border:1px dashed rgba(255,255,255,.2); color:var(--muted); font-weight:600 }
+.title{ font-size:clamp(28px, 6vw, 44px); line-height:1.15; font-weight:800; margin:12px 0 8px }
+.subtitle{ color:var(--muted); font-weight:600; margin-bottom:18px }
+.btns{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px }
+.btn {
+  background: linear-gradient(180deg, rgba(28,40,70,.6), rgba(28,40,70,.8)); /* darker gradient */
+  box-shadow: none; /* remove bright glow */
+  border: 1px solid rgba(124,156,255,.1); /* subtle border */
+  color: var(--text); /* keeps text readable */
+  transition: transform 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(180deg, rgba(124,156,255,.18), rgba(124,156,255,.09)); /* optional light glow on hover */
+  box-shadow:0 10px 18px var(--ring);
+}
+
+.panel{ padding:22px; border-radius:22px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12) }
+.grid{ display:grid; gap:20px }
+.grid-3{ grid-template-columns:repeat(3, 1fr) }
+@media (max-width:1000px){ .grid-3{ grid-template-columns:1fr 1fr } }
+@media (max-width:720px){ .grid-3{ grid-template-columns:1fr } }
+
+.section{ padding:40px 0 16px }
+.section h2{ margin:0 0 14px; font-size:26px; letter-spacing:.3px }
+.muted{ color:var(--muted) }
+.chip{ display:inline-flex; align-items:center; padding:8px 12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:999px; margin:6px; font-weight:600 }
+.list{ list-style:none; padding:0; margin:0 }
+.edu-item, .cert-item{ display:flex; gap:14px; padding:16px; border-radius:16px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); align-items:flex-start }
+.edu-item .dot, .cert-item .dot{ width:10px; height:10px; margin-top:6px; border-radius:99px; background:conic-gradient(from 120deg, var(--brand), var(--brand-2)) }
+
+.proj{ display:flex; flex-direction:column; gap:10px; padding:18px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1) }
+.proj h3{ margin:2px 0 4px; font-size:18px }
+.proj p{ margin:0; color:var(--muted) }
+.proj .meta{ display:flex; flex-wrap:wrap; gap:8px; margin-top:6px }
+
+footer{ padding:36px 0 60px; color:var(--muted) }
+.foot{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap }
+.social{ display:flex; gap:10px }
+.i{ width:36px; height:36px; border-radius:12px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03) }
+:root{
+  --bg: #0b1020;
+  --panel: #0f1733;
+  --text: #e8ecf8;
+  --muted: #a8b0c3;
+  --brand: #7c9cff;
+  --brand-2: #00e5a8;
+  --ring: rgba(124,156,255,.35);
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin:0; font-family: Inter, system-ui; color: var(--text); background: radial-gradient(1000px 600px at 10% -20%, #1b2553 0, transparent 60%), radial-gradient(900px 600px at 100% 10%, #0f2d3c 0, transparent 60%), var(--bg); line-height:1.6; overflow-x:hidden; scroll-behavior: smooth; }
+a{ color:inherit; text-decoration:none }
+
+.container{ width:min(1100px, 92%); margin-inline:auto }
+header{ position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px); background:color-mix(in oklab, var(--bg) 80%, transparent); border-bottom:1px solid rgba(255,255,255,.06); z-index:50; animation: slideDown 1s ease }
+.nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+.brand{ display:flex; gap:.7rem; align-items:center; font-weight:800; letter-spacing:.2px }
+.logo{ width:36px; height:36px; border-radius:11px; background:conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2)); box-shadow:0 0 0 6px rgba(124,156,255,.12); }
+.nav-links{ display:flex; gap:1rem; font-weight:600; color:var(--muted) }.nav a{ opacity:.9 } .nav a:hover{ opacity:1 }
+
+.hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; padding:64px 0 24px; align-items:center; animation: fadeIn 1s ease }
+@media (max-width:900px){ .hero{ grid-template-columns:1fr } }
+
+.card{ background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:20px; box-shadow:0 10px 30px rgba(0,0,0,.25); animation: fadeInUp 1s ease }
+.hero .left{ padding:28px; border-radius:24px }
+
+.hello{ display:inline-flex; align-items:center; gap:.5rem; padding:6px 10px; border-radius:999px; border:1px dashed rgba(255,255,255,.2); color:var(--muted); font-weight:600; animation: fadeInUp 1s ease }
+.title{ font-size:clamp(28px, 6vw, 44px); line-height:1.15; font-weight:800; margin:12px 0 8px; animation: fadeInUp 1.2s ease }
+.subtitle{ color:var(--muted); font-weight:600; margin-bottom:18px; animation: fadeInUp 1.4s ease }
+.btns{ display:flex; flex-wrap:wrap; gap:12px; margin-top:12px; animation: fadeInUp 1.6s ease }
+.btn{ display:inline-flex; align-items:center; gap:.6rem; padding:12px 16px; border-radius:14px; border:1px solid rgba(255,255,255,.1); font-weight:700; background:linear-gradient(180deg, rgba(124,156,255,.18), rgba(124,156,255,.09)); box-shadow:0 10px 18px var(--ring); transition:.3s transform; cursor:pointer; }
+.btn.secondary{ background:transparent; color:var(--text) }
+.btn:hover{ transform:scale(1.05) }
+
+.tag{ display:inline-flex; align-items:center; gap:.4rem; padding:6px 10px; border-radius:999px; background:rgba(124,156,255,.14); border:1px solid rgba(124,156,255,.24); color:#dbe3ff; font-weight:700; font-size:13px }
+.panel{ padding:22px; border-radius:22px; background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12) }
+.grid{ display:grid; gap:20px }
+.grid-3{ grid-template-columns:repeat(3, 1fr) }
+@media (max-width:1000px){ .grid-3{ grid-template-columns:1fr 1fr } }
+@media (max-width:720px){ .grid-3{ grid-template-columns:1fr } }
+
+.section{ padding:40px 0 16px; animation: fadeInUp 1s ease }
+.section h2{ margin:0 0 14px; font-size:26px; letter-spacing:.3px }
+.muted{ color:var(--muted) }
+.chip{ display:inline-flex; align-items:center; padding:8px 12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-radius:999px; margin:6px; font-weight:600 }
+.list{ list-style:none; padding:0; margin:0 }
+.edu-item, .cert-item{ display:flex; gap:14px; padding:16px; border-radius:16px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); align-items:flex-start }
+.edu-item .dot, .cert-item .dot{ width:10px; height:10px; margin-top:6px; border-radius:99px; background:conic-gradient(from 120deg, var(--brand), var(--brand-2)) }
+
+.proj{
+  position: relative;
+  display:flex; flex-direction:column; gap:10px; padding:18px; border-radius:18px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+.proj:hover{
+  transform: translateY(-6px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.3);
+}
+.proj::after{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -50%;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.5), rgba(255,255,255,0));
+  transform: rotate(-15deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.proj:hover::after{
+  animation: shootingStarCard 0.8s forwards;
+  opacity: 1;
+}
+
+@keyframes shootingStarCard{
+  0% { left: -50%; opacity: 1; }
+  50% { left: 50%; opacity: 0.8; }
+  100% { left: 125%; opacity: 0; }
+}
+
+/* FOOTER */
+footer{ padding:36px 0 60px; color:var(--muted) }
+.foot{ display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap }
+.social{ display:flex; gap:10px }
+.i{ width:36px; height:36px; border-radius:12px; display:grid; place-items:center; border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.03) }
+
+/* --- Animations --- */
+@keyframes fadeIn{ from{opacity:0} to{opacity:1} }
+@keyframes fadeInUp{ from{opacity:0; transform:translateY(20px)} to{opacity:1; transform:none} }
+@keyframes slideDown{ from{transform:translateY(-100%)} to{transform:none} }
+
+/* --- Shooting Star Background --- */
+.shooting-star{
+  position: fixed;
+  top: -50px;
+  left: -100px;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0));
+  border-radius: 50%;
+  transform: rotate(45deg);
+  animation: shoot 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+@keyframes shoot{
+  0% { transform: translate(0,0) rotate(45deg); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translate(120vw, 80vh) rotate(45deg); opacity: 0; }
+}
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: conic-gradient(from 210deg at 50% 50%, var(--brand), var(--brand-2));
+  box-shadow: 0 0 0 6px rgba(124,156,255,.12);
+  animation: rotateLogo 5s linear infinite; /* <-- this rotates continuously */
+}
+
+@keyframes rotateLogo {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* 1️⃣ Header nav hover */
+.nav-links a {
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+.nav-links a:hover {
+  color: var(--brand);
+  transform: scale(1.05);
+}
+
+/* 2️⃣ Skills chip hover */
+.chip {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.chip:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(124,156,255,0.35);
+  background: rgba(124,156,255,0.12);
+  border-color: rgba(124,156,255,0.25);
+}
+
+/* 3️⃣ Hero card entrance animation */
+.hero .left {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: heroEntrance 1s forwards ease-out 0.2s;
+}
+
+@keyframes heroEntrance {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optional: Hero hello text fade-in */
+.hello {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: helloFadeIn 1s forwards ease-out 0.5s;
+}
+
+@keyframes helloFadeIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    
+
+    <div class="shooting-star" style="animation-delay:0s"></div>
+<div class="shooting-star" style="animation-delay:1s"></div>
+<div class="shooting-star" style="animation-delay:2s"></div>
+
+    <div class="container nav">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> <span>Spandana</span></div>
+      <nav class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#certs">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="left card">
+        <div class="hello">👋 Hi, I'm <strong style="letter-spacing:.2px">Chetukoori Spandana</strong></div>
+        <h1 class="title">Data Analyst</h1>
+        <div class="subtitle">Hyderabad, India • B.Tech in Computer Science (2021 – 2025)</div>
+        <div class="muted">I design interactive dashboards, analyze data for insights, and build ML models. Comfortable with Excel, Power BI, Python, and SQL. Looking for an entry‑level role where I can turn data into decisions.</div>
+        <div class="btns">
+          <!-- ✏️ Replace the link below with your real resume (Google Drive / PDF link) -->
+          <a class="btn secondary" href="#projects">✨ View Projects</a>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="grid" style="gap:14px">
+          <div class="tag">⚙️ Python • Pandas • NumPy</div>
+          <div class="tag">📊 Power BI • DAX</div>
+          <div class="tag">🗄️ SQL • MySQL</div>
+          <div class="tag">📈 Excel • Tableau</div>
+          <div class="tag">🤖 Machine Learning • Scikit‑learn</div>
+          <div class="tag">🕸️ HTML • CSS • JS</div>
+        </div>
+      </div>
+    </section><!-- PROJECTS -->
+<section id="projects" class="section">
+  <h2>Projects</h2>
+  <div class="grid grid-3">
+    <article class="proj">
+      <h3>Power BI Sales Dashboard</h3>
+      <p>Interactive dashboard tracking key retail KPIs: Sales, Profit, Orders. DAX measures for YoY growth, top categories, and regional insights.</p>
+      <div class="meta">
+        <span class="chip">Power BI</span>
+        <span class="chip">DAX</span>
+        <span class="chip">Data Viz</span>
+      </div>
+      <!-- 🔗 Replace with your live/GitHub link -->
+      <a class="btn" style="width:max-content" href="https://github.com/Span-1/PowerBI--sales-dashboard-project.git" target="_blank" rel="noopener">Project Link</a>
+      <div class="muted">Jun 2025</div>
+    </article>
+    <article class="proj">
+      <h3>Excel Retail Sales Analysis</h3>
+      <p>Store‑wise sales analysis with pivot charts; applied conditional formatting, trend analysis, and dynamic slicers.</p>
+      <div class="meta">
+        <span class="chip">Excel</span>
+        <span class="chip">Pivot Tables</span>
+        <span class="chip">Charts</span>
+      </div>
+      <a class="btn" style="width:max-content" href="https://github.com/Span-1/Excel---Saless-Analysis-Project.git" target="_blank" rel="noopener">Project Link</a>
+      <div class="muted">Jul 2025</div>
+    </article>
+    <article class="proj">
+      <h3>Predicting Willingness to Donate Blood</h3>
+      <p>Built a classification model using questionnaire data; deployed a small web tool to estimate donor likelihood.</p>
+      <div class="meta">
+        <span class="chip">Python</span>
+        <span class="chip">scikit‑learn</span>
+        <span class="chip">Flask</span>
+      </div>
+      <a class="btn" style="width:max-content" href="https://github.com/Span-1/Predicting-Willingness-to-Donate-Blood-Machine-Learning-Project-.git" target="_blank" rel="noopener">Project Link</a>
+      <div class="muted">Mar 2025</div>
+    </article>
+    <article class="proj">
+      <h3>Data Analytics Projects</h3>
+      <p>Built dashboards for e-commerce sales, social media campaign tracking, and college event feedback performance Tracker, Used Power BI, Excel, and Python for data cleaning, visualization, and analysis.</p>
+      <div class="meta">
+        <span class="chip">SQL</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Excel</span>
+        <span class="chip">Python</span>
+        <span class="chip">NLP</span>
+      </div>
+      <a class="btn" style="width:max-content" href="https://github.com/Span-1/data-analytics-internship-projects.git" target="_blank" rel="noopener">Project Link</a>
+      <div class="muted">Aug 2025</div>
+    </article>
+    <article class="proj">
+      <h3>Web Development Project</h3>
+      <p>Built and deployed a responsive landing page, calculator app, and personal portfolio website.</p>
+      <div class="meta">
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
+        <span class="chip">JavaScript</span>
+        <span class="chip">Frontend</span>
+      </div>
+      <a class="btn" style="width:max-content" href="https://github.com/Span-1/Web-Development-Projects.git" target="_blank" rel="noopener">Project Link</a>
+      <div class="muted">2024</div>
+    </article>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section">
+  <h2>Skills</h2>
+  <div>
+    <span class="chip">Python</span>
+    <span class="chip">Pandas</span>
+    <span class="chip">NumPy</span>
+    <span class="chip">Matplotlib</span>
+    <span class="chip">Seaborn</span>
+    <span class="chip">SQL</span>
+    <span class="chip">MySQL</span>
+    <span class="chip">DBMS</span>
+    <span class="chip">Power BI</span>
+    <span class="chip">Tableau</span>
+    <span class="chip">Excel</span>
+    <span class="chip">GitHub</span>
+    <span class="chip">Machine Learning</span>
+    <span class="chip">Data Analysis</span>
+    <span class="chip">Data Visualization</span>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section">
+  <h2>Education</h2>
+  <ul class="list">
+    <li class="edu-item">
+      <div class="dot"></div>
+      <div>
+        <strong>Matrusri Engineering College</strong> — Bachelor of Technology, Computer Science & Engineering
+        <div class="muted">Hyderabad, TS • Nov 2021 – Aug 2025</div>
+        <div class="muted">Relevant Coursework: DBMS, Data Structures, Probability & Statistics, Web Technologies, Machine Learning.</div>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs" class="section">
+  <h2>Certifications</h2>
+  <ul class="list grid">
+    <li class="cert-item"><div class="dot"></div><div><strong>Data Analytics Virtual Internship</strong> — Deloitte (Forage)</div></li>
+    <li class="cert-item"><div class="dot"></div><div><strong>Data Analytics Job Simulation</strong> — Accenture (Forage)</div></li>
+    <li class="cert-item"><div class="dot"></div><div><strong>SQL</strong> — Oracle</div></li>
+    <li class="cert-item"><div class="dot"></div><div><strong>Digital Marketing</strong> — Google</div></li>
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Contact</h2>
+  <div class="panel">
+    <p class="muted">I’m open to data analyst internships and entry‑level roles. Reach out and I’ll reply quickly.</p>
+    <div class="btns">
+     
+<a class="btn secondary" href="mailto:spandana.email@example.com">✉️ Email Me</a>
+
+      <a class="btn secondary" href="https://github.com/Span-1" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn secondary" href="  https://www.linkedin.com/in/chetukoori-spandana-36173227b" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+  </main>  <footer>
+    <div class="container foot">
+      <small>© <span id="y"></span> Spandana. Built with clean HTML/CSS.</small>
+      <div class="social">
+        <a class="i" aria-label="GitHub" href="https://github.com/Span-1" target="_blank" rel="noopener">🐙</a>
+        <a class="i" aria-label="LinkedIn" href="https://www.linkedin.com/in/chetukoori-spandana-36173227b" target="_blank" rel="noopener">in</a>
+        <a class="i" aria-label="Email" href="mailto:spandanareddie111@gmail.com">✉️</a>
+      </div>
+    </div>
+  </footer>  <script>
+    // current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const el = document.querySelector(a.getAttribute('href'));
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
+  </script></body>
+</html> 
